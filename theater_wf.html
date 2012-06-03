@@ -1,0 +1,384 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+	<title>Course Theater Wireframe</title>
+    <link href='http://fonts.googleapis.com/css?family=Droid+Serif' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700' rel='stylesheet' type='text/css'>
+    <style type="text/css" media="screen">
+        @font-face{ 
+        font-family: "AlteHaasGroteskRegular";
+        src: url('http://fontsforweb.com/public/fonts/1140/AlteHaasGroteskRegular.eot');
+        src: local("Alte Haas Grotesk"), url('http://fontsforweb.com/public/fonts/1140/AlteHaasGroteskRegular.ttf') format("truetype");
+        }
+        @font-face{ 
+        font-family: "AlteHaasGroteskBold";
+        src: url('http://fontsforweb.com/public/fonts/1139/AlteHaasGroteskBold.eot');
+        src: local("Alte Haas Grotesk Bold"), url('http://fontsforweb.com/public/fonts/1139/AlteHaasGroteskBold.ttf') format("truetype");
+        }
+    	
+        h1 {
+        font-family: 'Droid Sans';
+		font-size: 2em;
+		letter-spacing: 0;}
+        html {
+            width: 100%;
+            height: 100%;
+        }
+        body {
+            margin: 0;
+            font-family: 'DroidSerif', Arial, sans-serif;
+            color: dimgrey;
+        }
+        /*
+        ::-webkit-scrollbar {
+            width: 13px;
+        }
+        ::-webkit-scrollbar-track {
+            -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+            -webkit-border-radius: 10px; border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb {
+            -webkit-border-radius: 10px;
+            border-radius: 5px;
+            background: gray;
+            -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+        }
+        */
+        a:link {
+            color: black;
+        }
+        a:visited {
+            color: purple;
+        }
+        
+        #wrapper {
+            background-image: -webkit-linear-gradient(top, whitesmoke, white);
+            position: relative;
+            padding: 0;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: left;
+            border: 3px;
+            width: 960px;
+            
+        }
+        #header {
+            padding: 0px;
+            width: auto;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        #logo {
+            padding: 0;
+            height: 89px;
+            width: 414px;
+            background-image: url(flipt_sprite.gif);
+            background-position: 0 0;
+        }
+    
+        #blogButton {
+            position: absolute;
+            top: 2px;
+            right: 0;
+            width: 112px;
+            height: 37px;
+            background-image: url(flipt_sprite.gif);
+            background-position: -130px -89px;
+        }
+        #blogButton:hover {
+            position: absolute;
+            top: 2px;
+            right: 0;
+            width: 112px;
+            height: 37px;
+            background-image: url(flipt_sprite.gif);
+            background-position: -130px -129px;
+        }
+        #blogButton:active {
+            position: absolute;
+            top: 2px;
+            right: 0;
+            width: 112px;
+            height: 37px;
+            background-image: url(flipt_sprite.gif);
+            background-position: -130px -170px;
+        }
+        #forumButton {
+            position: absolute;
+            right: 116px;
+            top: 2px;
+            width: 112px;
+            height: 37px;
+            background-image: url(flipt_sprite.gif);
+            background-position: -270px -89px;
+        }
+        #forumButton:hover {
+            position: absolute;
+            right: 116px;
+            top: 2px;
+            width: 112px;
+            height: 37px;
+            background-image: url(flipt_sprite.gif);
+            background-position: -270px -133px;
+        }
+        #forumButton:active {
+            position: absolute;
+            right: 116px;
+            top: 2px;
+            width: 112px;
+            height: 37px;
+            background-image: url(flipt_sprite.gif);
+            background-position: -270px -180px;
+        }
+        
+        #profileButton {
+            position: absolute;
+            right: 232px;
+            top: 2px;
+            width: 112px;
+            height: 37px;
+            background-image: url(flipt_sprite.gif);
+            background-position: -130px -209px;
+        }
+        #profileButton:hover {
+            position: absolute;
+            right: 232px;
+            top: 2px;
+            width: 112px;
+            height: 37px;
+            background-image: url(flipt_sprite.gif);
+            background-position: -130px -250px;
+        }
+        #profileButton:active {
+            position: absolute;
+            right: 232px;
+            top: 2px;
+            width: 112px;
+            height: 37px;
+            background-image: url(flipt_sprite.gif);
+            background-position: -130px -291px;
+        }
+        #vidContainer {
+            position: relative;
+            height: 400px;
+            width: 960px;
+            display: block;
+            /*
+            padding-top: 25px;
+            */
+        }
+        #vid {
+            height: 400px;
+            width: 710px;
+            background-color: grey;
+        }    
+        #vidContainer #vidList {
+              
+            position: absolute;
+            top: 0px;
+            right: 0px;
+            height: 400px;
+            width: 250px;
+            overflow: auto;
+            border-left: solid 1px whitesmoke;
+
+        }
+        #vidList ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        #vidList li a {
+            display: block;
+            padding: .3em;
+            padding-left: 1em;
+            border-top: solid 1px white;
+        }
+        #vidList li a:hover {
+            color: DimGray;
+            background-color: white;
+            background-image: -webkit-linear-gradient(top, white, #d1d1d1); 
+        }
+        #vidNav {
+            
+            position: relative;
+            /*top: 416px;
+            left: 0;
+            */
+            width: 709px;
+            height: 32px;
+        }   
+        .vidNavButton {
+            text-align: center;
+            position: absolute;
+            font-family: 'Droid Sans', Arial, sans-serif;
+            height: 32px;
+            width: 110px;
+            height: 27px;
+        }
+        
+        
+        #prevButton {
+            left: 0;
+            background-image: url(flipt_sprite.gif);
+            background-position: 0 -277px;
+        }
+        #prevButton:hover {
+            left: 0;
+            background-image: url(flipt_sprite.gif);
+            background-position: 0 -309px;
+        }
+        #prevButton:active {
+            left: 0;
+            background-image: url(flipt_sprite.gif);
+            background-position: 0 -341px;
+        }
+        #nextButton {
+            right: 0;
+            background-image: url(flipt_sprite.gif);
+            background-position: 0 -183px;
+
+        }
+        #nextButton:hover {
+            right: 0;
+            background-image: url(flipt_sprite.gif);
+            background-position: 0 -215px;
+
+        }
+        #nextButton:active {
+            right: 0;
+            background-image: url(flipt_sprite.gif);
+            background-position: 0 -246px;
+
+        }
+        #search {
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 15px;
+            /*
+            position: absolute;
+            top: 535px;
+            */
+            height: 30px;
+            width: 710px;
+            /*
+            left: 680px;
+            */
+        
+        }
+        #search #bg {
+            width: 400px;
+
+        }
+        #search .textfield {
+            height: 30px;
+            width: 410px;
+            border: 0;
+            font-size: 1.1em;
+            padding: 0;
+            float: left;
+            background-image: url(flipt_sprite.gif);
+            background-position: -270px -230px;
+        }
+        #search .button {
+            border: none; 
+            float: left;
+            background: url(flipt_sprite.gif);
+            background-position: -730px -230px;
+            height: 40px;
+            width: 34px;
+            cursor: pointer;
+        }
+        #search input[type="submit"]:hover {
+            border: solid 1px red;
+        }
+        #search input[type="submit"]:active {
+            border: solid 1px green;
+        }
+        #queryResults {
+            position: relative;
+            min-height: 150px;
+            width: 710px;
+            display: block;
+        }
+        #footer {
+            height: 55px;
+            background-color: dimgrey;
+            width: auto;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrapper">
+		<div id="header">
+			<div id="logo">
+				
+			</div>
+			<div id="blogButton" class="navButton">
+                </div> 
+            <div id="forumButton" class="navButton">
+			</div>
+			<div id="profileButton" class="navButton">
+				<!-- There'll probably be some dropdowns here -->
+			</div>
+			<div id="moduleLinks">
+			<!-- ul of links other modules -->
+			</div>
+		
+		</div>
+		<div id="vidContainer">
+			<div id="vid">
+		
+			</div>
+			<div id="vidList">
+			<!-- ul to other vids on the playlist -->
+            <h1 style=" margin: 0; text-align: center;"> Module 1 </h1>
+            <ul>
+                <li><a href="">Link</a></li>
+                <li><a href="">Link</a></li>
+                <li><a href="">Link</a></li>
+                <li><a href="">Link</a></li>
+                <li><a href="">Link</a></li>
+                <li><a href="">Link</a></li>
+                <li><a href="">Link</a></li>
+                <li><a href="">Link</a></li>
+                <li><a href="">Link</a></li>
+                <li><a href="">Link</a></li>
+                <li><a href="">Link</a></li>
+                <li><a href="">Link</a></li>
+                <li><a href="">Link</a></li>
+                <li><a href="">Link</a></li>
+                <li><a href="">Link</a></li>
+            </ul>
+            </div>
+		</div>
+		<div id="vidNav">
+			<div id="prevButton" class="vidNavButton">
+            </div>
+			<div id="nextButton" class="vidNavButton">
+            </div>
+			<!-- probably have some other, context dependent buttons here -->
+			
+		</div>
+		<div id="search">
+            <div id="bg"></div>
+			<div id="searchButton">
+                <form method="post" name="theaterSearch">
+                    <input type="text" class="textfield"/>
+
+                    <input type="submit" class="button" value=""/>
+                </form>
+            </div>
+		</div>
+		<div id="queryResults">
+		</div>
+		<div id="footer">
+		<!-- still need to throw some stuff down here -->
+		</div>
+    </div>
+</body>
+</html>
