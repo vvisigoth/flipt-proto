@@ -56,7 +56,7 @@ h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover, h6 a:hover  {text-de
 }
 
 .col-full  { 
-    width: 940px; 
+    width: 970px; 
     margin: 0 auto; 
 }
 
@@ -247,6 +247,7 @@ li.resultTitle:hover {
 
 #vidList .isPlaying {
     background-color: #D9B2D9;
+    color: black;
 }
 
 #vidListHeader {
@@ -322,7 +323,7 @@ hr {
 #navigation ul {
     list-style: none;
     margin: 0;
-    padding: 1em;
+    padding: 1em 0 1em 1em;
 }
 #navigation li {
     float: right;
