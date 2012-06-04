@@ -50,11 +50,12 @@ $(document).ready(function(){
             "Filters"
         ];
         var playlistJSON = [{ "title": "Love King", "src": "http://www.youtube.com/embed/AGcQgUnxY14" }, {"title": "Keep on Lovin Me", "src": "http://www.youtube.com/embed/qP1Z3M9G1j0" }, { "title": "Screams of Passion", "src": "http://www.youtube.com/embed/D6zduBiRZw8"}];
-        var vesultsJSON = [{ "resultTitle": "What time is Workaholics on?", "resultExcerpt": "Dunno, ask Anthony."}, {"resultTitle": "Is Futurama better than the Simpsons?", "resultExcerpt": "I keep on hearing that it is, but I'm not so sure..."}]
+        var resultsJSON = [{ "resultTitle": "What time is Workaholics on?", "resultExcerpt": "Dunno, ask Anthony."}, {"resultTitle": "Is Futurama better than the Simpsons?", "resultExcerpt": "I keep on hearing that it is, but I'm not so sure..."}]
         var filterJSON = [{ "resultTitle": "What is the best type of filter to use on a bassline?", "resultExcerpt": "I tend to use a low-pass filter, but it really depends", "answeredBy": "anthonyarroyo"}, { "resultTitle": "How can I MIDI map the filter type?", "resultExcerpt": "You actually can't map filter type to a button. You have to map it to a knob, so that you can scroll through them.", "answeredBy": "AfroDJMac"}]
-        var deviceRackJSON = [{ "resultTitle": "Is there a maximum number of chains in a device rack?", "resultExcerpt": "I don't think that there is a hard limit, but at some point it becomes unwiedly. I usually try to keep it under at least 128, since after that you can't effectively use the chain selector.", "answeredBy": "anthonyarroyo"}, { "resultTitle": "How can you assign more than 8 macros?", "resultExcerpt": "You can only assign 8 macros, after that you have to use MIDI controllers.", "answeredBy": "AfroDJMac"}]
+        var deviceRackJSON = [{ "resultTitle": "Is there a maximum number of chains in a device rack?", "resultExcerpt": "I don't think that there is a hard limit, but at some point it becomes unwiedly. I usually try to keep it under at least 128, since after that you can't effectively use the chain selector.", "answer_1": "Answer", "answeredBy": "anthonyarroyo"}, { "resultTitle": "How can you assign more than 8 macros?", "resultExcerpt": "You can only assign 8 macros, after that you have to use MIDI controllers.", "answer_1": "Answer", "answeredBy": "AfroDJMac"}]
         var resultsDictJSON = { "Filters": filterJSON, "Device Racks": deviceRackJSON }
         var vidList = [];
+        var answerList = [];
         var results = [];
         var deactivateVidNav = function(pos){
             if (pos == playlistJSON.length - 1){
@@ -74,7 +75,7 @@ $(document).ready(function(){
                 if (item.resultExcerpt != "No Answer...yet."){
                 results.push('<li id="' + i + '" class="resultTitle">' + item.resultTitle + '</li><ul><li class="resultExcerpt">' + item.resultExcerpt + '<span class="answeredBy">' + item.answeredBy +'</span></li></ul>')
                 } else {
-                results.push('<li id="' + i + '" class="resultTitle">' + item.resultTitle + '</li><ul><li class="resultExcerpt"><span class="noAnswer">' + item.resultExcerpt + '</span><span class="answeredBy">' + item.answeredBy +'</span></li></ul>')
+                results.push('<li id="' + i + '" class="resultTitle">' + item.resultTitle + '</li><ul><li class="resultExcerpt"><span class="noAnswer">' + item.resultExcerpt + '</spane<span class="answeredBy">' + item.answeredBy +'</span></li></ul>')
                 }
 
             });
@@ -88,6 +89,8 @@ $(document).ready(function(){
         $("#newQuestion").css('display', 'none');
         $("textarea").val(instructions);
         $("textarea").css('color', 'grey');
+        // Populate Answer Page
+        
         // Autocomplete 
     $(function() {
         $( "#tags" ).autocomplete({
@@ -112,7 +115,7 @@ $(document).ready(function(){
         });
         $("#vidList ul").append( vidList.join( '' ) );
         $("#" + pos).addClass("isPlaying");
-        // click to navigate to video
+        //vidListIteam to navigate to video
         $(".vidListItem").click(function(){
             pos = this.id;
             $("#courseVid").attr('src', playlistJSON[pos].src);

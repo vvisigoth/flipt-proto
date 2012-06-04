@@ -5,8 +5,11 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 
-	<title>Course Theater Wireframe</title>
+	<title>Answer Base Wireframe</title>
     <link href='fliptstyle.css' rel='stylesheet' type='text/css'/>
+    <link href='http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.17/themes/base/jquery-ui.css' rel='stylesheet' type='text/css'/>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script> 
 </head>
 <body>
     <div id="container">
@@ -25,22 +28,24 @@
         <div id="content" class="col-full">
             <div id="main" class="fullwidth">
                 <div id="answerContentMain" class="results">
-                    <h1 id=vidListHeader>Recently Answered Questions</h1>
-                    <hr>
-                    <ul>
-                            <li class="resultTitle"><a href="">An answer title</a></li>
-                            <ul>
-                                <li class="resultExcerpt">thddddddddd ldddddd dddddddddd ddddddddddddd dddddddddddddddddddddddddddddd:we first line of an answer</li>
-                            </ul>
-                            <li class="resultTitle"><a href="">An answer title</a></li>
-                            <ul>
-                                <li class="resultExcerpt">the first line of an answer</li>
-                            </ul>
-                            <li class="resultTitle"><a href="">An answer title</a></li>
-                            <ul>
-                                <li class="resultExcerpt">the first line of an answer</li>
-                            </ul>
-                        </ul>
+                    <h2 id="answerListHeader">Recently Asked Questions</h2>
+                    <ul id="answerContentMainUl">
+                    </ul>
+                </div>
+                <div id="singleAnswerContentMain" class="results">
+                    <h2 id="answerListHeader1">Answer</h2>
+                    <div id="questionExcerpt">
+                        Let me just explain the question a little bit.
+                    </div>
+                        <div id="answers">
+                        </div>
+
+                    <form id="newAnswerSubmit" action="newAnswerSubmit" method="post" accept-charset="utf-8">
+                        <textarea></textarea> 
+                    
+                    
+                    <p><input id="newAnswerSubmitButton" type="submit" value="Answer" /></p>
+                    </form>
                 </div>
                 <div id="answerSidebar" class="sidebarResults">
                     <div class="sidebarMenu">
@@ -87,4 +92,35 @@
         -->
     </div>
 </body>
+<script type="text/javascript" charset="utf-8">
+    $(document).ready(function(){
+            //This vars are all garbage
+        var filterJSON = [{ "resultTitle": "What is the best type of filter to use on a bassline?", "resultExcerpt": "I tend to use a low-pass filter, but it really depends", "answeredBy": "anthonyarroyo"}, { "resultTitle": "How can I MIDI map the filter type?", "resultExcerpt": "You actually can't map filter type to a button. You have to map it to a knob, so that you can scroll through them.", "answeredBy": "AfroDJMac"}]
+        var deviceRackJSON = [{ "resultTitle": "Is there a maximum number of chains in a device rack?", "resultExcerpt": "I don't think that there is a hard limit, but at some point it becomes unwiedly. I usually try to keep it under at least 128, since after that you can't effectively use the chain selector.", "answer_1": "Answer", "answeredBy": "anthonyarroyo"}, { "resultTitle": "How can you assign more than 8 macros?", "resultExcerpt": "You can only assign 8 macros, after that you have to use MIDI controllers.", "answer_1": "Answer", "answeredBy": "AfroDJMac"}]
+        var resultsDictJSON1 = { "Filters": filterJSON, "Device Racks": deviceRackJSON }
+        //Real stuff starts here
+        var resultsDictJSON = [{ "key": "Filters", "resultTitle": "What is the best type of filter to use on a bassline?", "resultExcerpt": "I tend to use a low-pass filter, but it really depends", "answers" : [{"answer": "some answer", "answeredBy": "anthonyarroyo"}, {"answer": "some other answer", "answeredBy": "AfroDJMac"}]}, {"key": "Filters", "resultTitle": "How can I MIDI map the filter type?", "resultExcerpt": "You actually can't map filter type to a button. You have to map it to a knob, so that you can scroll through them.", "answeredBy": "AfroDJMac"}, {"key": "Device Racks",  "resultTitle": "Is there a maximum number of chains in a device rack?", "resultExcerpt": "I don't think that there is a hard limit, but at some point it becomes unwiedly. I usually try to keep it under at least 128, since after that you can't effectively use the chain selector.", "answer_1": "Answer", "answeredBy": "anthonyarroyo"}, {"key": "Device Racks", "resultTitle": "How can you assign more than 8 macros?", "resultExcerpt": "You can only assign 8 macros, after that you have to use MIDI controllers.", "answer_1": "Answer", "answeredBy": "AfroDJMac"}]
+                $.each(resultsDictJSON, function(i, item){
+                    $("#answerContentMainUl").append('<li id="' + i + '" class="answerTitle">' + item.resultTitle + '</li><ul><li class="answerExcerpt">' + item.resultExcerpt + '<span class="answeredBy">' + item.answeredBy + '</span></li></ul>');
+                });
+            $(".answerTitle").click(function(){
+                var id = this.id;
+                //var title = this.class('answerTitle').text();
+                var title = $("#" + id + ".answerTitle").text();
+                var excerpt = resultsDictJSON[id]["resultExcerpt"];
+                $("#questionExcerpt").html(excerpt);
+                var a = [];
+                $.each(resultsDictJSON[id]["answers"], function(i, item){
+                    a.push('<div class="answer">' + item.answer + '<br><span class="answeredBy">' + item.answeredBy + '</span></div>');
+                    });
+                
+                $("#answers").append(a.join( '' ) );
+                $("#answerContentMain").hide();
+                $("#singleAnswerContentMain").show();
+            
+                $("#answerListHeader1").text(title);
+                });
+
+            });
+</script>
 </html>
