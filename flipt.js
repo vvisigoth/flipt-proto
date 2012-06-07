@@ -110,6 +110,7 @@ $(document).ready(function(){
         // Check if announcement has been seen already. Announcement can come to page as JSON and include an expiration date. Set a cookie for the last announcement, so that the script can see if it has already been seen.
 
         // Generate clickable VidList from JSON
+        // TODO replace this whole thing with the YT javascript API: Time stamp questions, make sure that prev, next works with sorted list
         $.each(playlistJSON, function(i, item) {
             vidList.push('<li id="' + i + '" class="vidListItem">' + item.title + '</li>');
         });
@@ -189,5 +190,8 @@ $(document).ready(function(){
                 $("textarea").val(instructions);
             }
             });
+        $(function() {
+                $("#vidList ul").sortable();
+                });
 
 });

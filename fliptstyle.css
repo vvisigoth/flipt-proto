@@ -351,6 +351,27 @@ hr {
     margin-top: 20px;
 }
 
+.voteBox {
+    float: left;
+    text-align: center;
+    margin-right: .5em;
+}
+.voteBox span {
+    display: block;
+}
+span.up {
+    padding-top: 0;
+}
+
+.votes {
+    color: purple;
+}
+.up, .down {
+    font-weight: bold;
+    padding: .5em;
+    cursor: pointer;
+}
+
 #questionBar form #tags, #newQuestion input[type="text"], #newQuestion textarea, #newAnswerSubmit textarea {
     font-family: 'Droid Sans', Arial, sans-serif;
     margin-left: 10px;
@@ -363,6 +384,7 @@ hr {
 }
 #newAnswerSubmit textarea {
     width: 95%;
+    min-height: 150px;
 }
 
 #newQuestion {
@@ -380,7 +402,7 @@ hr {
 #newQuestionSubscribe input[type="checkbox"] {
 }
 
-#questionBar #questionSubmit, #newQuestionSubmit, #newQuestionCancel, #newAnswerSubmitButton {
+#questionBar #questionSubmit, #newQuestionSubmit, #newQuestionCancel, #newAnswerSubmitButton, #newAnswerCancelButton {
     -moz-border-radius: 2px;
     -webkit-border-radius: 2px;
     border-radius: 2px;  
@@ -400,7 +422,7 @@ hr {
     border: 0;
     margin-bottom: 5px;
 }
-#questionBar #questionSubmit:active, #newQuestionSubmit:active, #newQuestionCancel:active, #newAnswerSubmitButton:active {
+#questionBar #questionSubmit:active, #newQuestionSubmit:active, #newQuestionCancel:active, #newAnswerSubmitButton:active, #newAnswerCancelButton:active {
     -moz-box-shadow: 0 0 0 0;
     -webkit-box-shadow: 0 0 0 0;
     box-shadow: 0 0 0 0;
@@ -422,9 +444,13 @@ hr {
     background-color: #efefef;
 }
 .answer {
-    margin: 2em;
+    margin: 2em 2em 2em 0;
     padding: 1em;
     font-family: 'Droid Sans', Arial, sans-serif;
+    border-bottom: solid 1px white;
+}
+
+.answer:last-child {
 }
 #navigation a:link, #navigation a:visited  { 
     display:block; 

@@ -19,8 +19,8 @@
                 <div id="logo">
                 </div>
                 <ul>
-                    <li><a href="http://www.anthonyarroyodotcom.com/theabletoncookbook">Blyg</a></li>
-                    <li><a href="/Users/anthonyarroyo/Desktop/_FliptProject/answerbase.html" class="thisPage">Answers</a></li>
+                    <li><a href="http://www.anthonyarroyodotcom.com/theabletoncookbook">Blog</a></li>
+                    <li><a href="/Users/anthonyarroyo/Desktop/_FliptProject/answerbaseprototype.html" class="thisPage">Answers</a></li>
                     <li><a href="/Users/anthonyarroyo/Desktop/_FliptProject/coursetheaterprototype.html">Course</a></li>
                     <li><a href="">Profile</a></li>
                 </ul>
@@ -122,7 +122,7 @@
                     return (b.ups - b.downs) - (a.ups - a.downs)
                     });
                 $.each(answers, function(i, item){
-                    a.push('<div id="' + i + '" class="answer"><span class="up">up</span><span class="down">down</span><span class="votes">' + (item.ups - item.downs)+ '</span>' + item.answer + '<br><span class="answeredBy">' + item.answeredBy + '</span></div>');
+                    a.push('<div id="' + i + '" class="answer"><div class="voteBox"><span class="up">up</span><span class="votes">' + (item.ups - item.downs)+ '</span><span class="down">down</span></div><li class="answertitle">' + item.answer + '</li><br><span class="answeredBy">' + item.answeredBy + '</span></div>');
                     });
                 $("#answers").append(a.join( '' ) );
                 $("#answerContentMain").hide();
@@ -147,25 +147,48 @@
                         return (b.ups - b.downs) - (a.ups - a.downs)
                         });
                     $.each(answers, function(i, item){
-                    a.push('<div id="' + i + '" class="answer"><span class="up">up</span><span class="down">down</span><span class="votes">' + (item.ups - item.downs)+ '</span>' + item.answer + '<br><span class="answeredBy">' + item.answeredBy + '</span></div>');
+                    a.push('<div id="' + i + '" class="answer"><div class="voteBox"><span class="up">up</span><span class="votes">' + (item.ups - item.downs)+ '</span><span class="down">down</span></div><li class="answertitle">' + item.answer + '</li><br><span class="answeredBy">' + item.answeredBy + '</span></div>');
                         });
                     
                     $("#answers").append(a.join( '' ) );
-                    return false;
-                    });
-                //vote up
+                var l = 1;
                 $(".up").click(function(){
-                        var id = $(this).parent().attr("id");
-                        alert(answers[id].ups);
-                        answers[id].ups ++;
-                        alert(answers[id].ups);
+                        l = $(this).parent().parent().attr("id");
+                        l = parseInt(l);
+                        //alert(answers[id].ups);
+                        answers[l].ups ++;
+                        //alert(answers[id].ups);
+                        var x = l + 1;
+                        $("#answers div:nth-child(" + x + ") .voteBox span.votes").text((answers[l].ups - answers[l].downs));
                         });
                 //vote down
                 $(".down").click(function(){
-                        var id = $(this).parent().attr("id");
-                        alert(answers[id].downs);
-                        answers[id].ups ++;
-                        alert(answers[id].downs);
+                        l = $(this).parent().parent().attr("id");
+                        l = parseInt(l);
+                        answers[l].downs ++;
+                        var x = l + 1;
+                        $("#answers div:nth-child(" + x + ") .voteBox span.votes").text((answers[l].ups - answers[l].downs));
+                        });
+                    return false;
+                    });
+                //vote up
+                var l = 1;
+                $(".up").click(function(){
+                        l = $(this).parent().parent().attr("id");
+                        l = parseInt(l);
+                        //alert(answers[id].ups);
+                        answers[l].ups ++;
+                        //alert(answers[id].ups);
+                        var x = l + 1;
+                        $("#answers div:nth-child(" + x + ") .voteBox span.votes").text((answers[l].ups - answers[l].downs));
+                        });
+                //vote down
+                $(".down").click(function(){
+                        l = $(this).parent().parent().attr("id");
+                        l = parseInt(l);
+                        answers[l].downs ++;
+                        var x = l + 1;
+                        $("#answers div:nth-child(" + x + ") .voteBox span.votes").text((answers[l].ups - answers[l].downs));
                         });
                 $("#newAnswerCancelButton").click(function(){
                         $("#answerContentMain").show();
